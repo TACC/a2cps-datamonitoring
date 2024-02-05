@@ -14,7 +14,7 @@ services:
       - 8.8.4.4
     stdin_open: true
     tty: true
-    command: ["R", "-e", "shiny::runApp('/home/app/src')"]
+    command: ["R", "-e", "shiny::runApp('/home/app')"]
     container_name: datamonitoring
     volumes:
       - ./src:/home/app

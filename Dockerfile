@@ -8,7 +8,9 @@ RUN R -e "install.packages('devtools')"
 
 RUN R -e "install.packages(c('shiny', 'shinydashboard','DT','dplyr','ggplot2','gridExtra','shinythemes','parsedate','remotes', 'tidyverse','httr','jsonlite','scales','forcats','ggplot2 ','DT','plotly','ggthemes','Hmisc','kableExtra','here','hablar','lubridate','janitor','UpSetR'), repos='http://cran.rstudio.com/')"
 
-RUN echo "local(options(shiny.port = 8050, shiny.host = '0.0.0.0'))" > /usr/lib/R/etc/Rprofile.site
+RUN chmod -R 777 /usr/local/lib/R/etc
+COPY Rprofile.site /usr/local/lib/R/etc/Rprofile.site
+RUN chmod -R 777 /usr/local/lib/R/etc/Rprofile.site
 RUN addgroup --system app \
     && adduser --system --ingroup app app
 WORKDIR /home/app
@@ -16,4 +18,4 @@ RUN chown app:app -R /home/app
 ADD src /home/app/
 USER app
 EXPOSE 8050
-CMD ["R", "-e", "shiny::runApp('/home/app/src')"]
+CMD ["R", "-e", "shiny::runApp('/home/app')"]

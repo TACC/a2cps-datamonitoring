@@ -8,13 +8,13 @@ services:
     #dockerfile: Dockerfile
     platform: linux/amd64
     ports:
-      - 8890:8050
+      - 8950:8950
     dns:
       - 8.8.8.8
       - 8.8.4.4
     stdin_open: true
     tty: true
-    command: ["R", "-e", "shiny::runApp('/home/app')"]
+    command: ["R", "-e", "shiny::runApp('/home/app', host = '0.0.0.0', port=8950)"]
     container_name: datamonitoring
     volumes:
       - ./src:/home/app

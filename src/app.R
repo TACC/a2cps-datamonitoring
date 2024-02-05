@@ -26,7 +26,7 @@ server <- function(input, output, session) {
     parsed_json <- fromJSON(response)
     output$info <- renderText({""})
     output$json_table <- renderDataTable({
-      parsed_json$data$imaging
+      parsed_json$data
     })
   }, error = function(e) {
     # Handle exceptions and update status

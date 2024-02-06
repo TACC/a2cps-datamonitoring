@@ -9,6 +9,7 @@ convert_cookie_string <- function(cookie) {
 
 get_api_data <- function(api_address, session) {
   print(api_address)
+  print(session$request$HTTP_COOKIE)
   cookies <- convert_cookie_string(session$request$HTTP_COOKIE)
   datastore_response <- GET(api_address, set_cookies(cookies))
   warn_for_status(datastore_response)

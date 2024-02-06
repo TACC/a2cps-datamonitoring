@@ -17,5 +17,5 @@ WORKDIR /home/app
 RUN chown app:app -R /home/app
 ADD src /home/app/
 USER app
-EXPOSE 8950
-CMD ["R", "-e", "shiny::runApp('/home/app', host = '0.0.0.0', port=8950)"]
+EXPOSE 8050
+CMD ["R", "-e", "shiny::runApp('/home/app', host = '0.0.0.0', port=8050)"]

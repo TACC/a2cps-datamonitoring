@@ -13,5 +13,7 @@ get_api_data <- function(api_address, session) {
   datastore_response <- GET(api_address, set_cookies(cookies))
   warn_for_status(datastore_response)
   json_text <- content(datastore_response, as = "text")
+  print("json_text: ")
+  print(typeof(json_text))
   return(json_text)
 }

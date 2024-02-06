@@ -3,7 +3,9 @@ library(httr)
 
 convert_cookie_string <- function(cookie) {
   cookie <- gsub(" ", "", cookie)
-  cookie <- gsub(";", ",", cookie)
+  cookie <- unlist(strsplit(cookie, ";"))
+  cookie <- strsplit(cookie, "=")
+  cookie <- setNames(sapply(cookie, function(x) x[2]), sapply(cookie, function(x) x[1]))
   return(cookie)
 }
 
